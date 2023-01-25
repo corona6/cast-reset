@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Cast Reset</title>
+    <meta charset="utf-8">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        #cast {
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="cast">Cast Reset</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/castjs/5.2.0/cast.min.js"></script>
+    <script>
+        const cjs = new Castjs();
+
+        document.getElementById('cast').addEventListener('click', function () {
+            if (cjs.available) {
+                cjs.cast('https://camo.githubusercontent.com/1db1396811dec4533f73cba5dd057398ae2683183bc8d61e58af82c6d10ec9c3/68747470733a2f2f692e696d6775722e636f6d2f5a6a54705133532e706e67');
+            }
+        });
+
+        cjs.on('connect', () => {
+            cjs.disconnect();
+        });
+    </script>
+</body>
+
+</html>
